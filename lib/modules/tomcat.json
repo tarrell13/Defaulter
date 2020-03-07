@@ -1,0 +1,28 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": ["tomcat"],
+    "CONFIGURATION": [{
+      "MODELS" : ["Apache Tomcat/9", "Apache Tomcat/8", "Apache Tomcat/7"],
+      "TOKEN_URI": "",
+      "AUTHENTICATION": "basic",
+      "URI": {
+        "GET": ["/manager/html", "/host-manager/html"],
+        "POST": []
+      },
+      "PARAMETERS": {
+        "USER_PARAMETER": "",
+        "PASS_PARAMETER": "",
+        "DYNAMIC": [],
+        "STATIC": {}
+      },
+      "SUCCESS_TOKENS": ["200"],
+      "FAILURE_TOKENS": ["403" , "401"],
+      "THRESHOLD": "2",
+      "REDIRECTION": "false",
+      "COOKIES" : "false",
+      "USERNAMES": ["tomcat", "manager"],
+      "PASSWORDS": ["tomcat", "s3cret","manager","password"]
+    }
+    ]
+  }
+}

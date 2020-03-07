@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": ["wordpress"],
+    "CONFIGURATION": [
+      {
+        "MODELS":  ["WordPress 5"],
+        "AUTHENTICATION": "form",
+	    "TOKEN_URI" : "/wp-login.php",
+        "URI": {
+          "GET": [],
+          "POST": ["/wp-login.php"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "log",
+          "PASS_PARAMETER": "pwd",
+          "DYNAMIC": ["redirect_to"],
+          "STATIC": { "wp-submit" : "Log In", "testcookie" : "1"}
+        },
+        "SUCCESS_TOKENS": ["302"],
+        "FAILURE_TOKENS": ["unknown", "incorrect"],
+        "THRESHOLD" : "3",
+	    "REDIRECTION" : "false",
+        "COOKIES" :"true",
+        "USERNAMES" : ["wp", "admin"],
+        "PASSWORDS" : ["wp", "admin", "password","admin"]
+      }
+    ]
+  }
+}

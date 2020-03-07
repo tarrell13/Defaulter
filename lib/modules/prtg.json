@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": ["prtg"],
+    "CONFIGURATION": [
+      {
+        "MODELS": ["PRTG Network Monitor 18"],
+        "AUTHENTICATION": "form",
+        "TOKEN_URI": "/index.htm",
+        "URI": {
+          "GET": [],
+          "POST": ["/public/checklogin.htm"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "username",
+          "PASS_PARAMETER": "password",
+          "DYNAMIC": [],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": ["200", "welcome", "logout"],
+        "FAILURE_TOKENS": ["200", "failed"],
+        "THRESHOLD" : "",
+        "REDIRECTION": "true",
+        "USERNAMES" : ["prtgadmin"],
+        "PASSWORDS" : ["prtgadmin"],
+        "COOKIES" : "true"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": [
+      "canopy"
+    ],
+    "CONFIGURATION": [
+      {
+        "MODELS" : ["Generic"],
+        "AUTHENTICATION": "form",
+	"TOKEN_URI": "",
+	"URI": {
+          "GET": [],
+          "POST": [
+            "/login.cgi"
+          ]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "CanopyUsername",
+          "PASS_PARAMETER": "CanopyPassword",
+          "STATIC": {"login" : "Login"},
+          "DYNAMIC": []
+        },
+        "SUCCESS_TOKENS": [
+          "200"
+        ],
+        "FAILURE_TOKENS": [],
+        "THRESHOLD": "",
+	"REDIRECTION": "",
+        "COOKIES" : "",
+        "USERNAMES" : [ "admin" ],
+        "PASSWORDS" : ["admin"]
+      }
+    ]
+  }
+}

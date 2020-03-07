@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": ["owncloud"],
+    "CONFIGURATION": [
+      {
+        "MODELS": ["common"],
+        "AUTHENTICATION": "form",
+        "TOKEN_URI": "/index.php/login",
+        "URI": {
+          "GET": [],
+          "POST": ["/index.php/login"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "user",
+          "PASS_PARAMETER": "password",
+          "DYNAMIC": [],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": ["settings","files","log out"],
+        "FAILURE_TOKENS": ["200","wrong password"],
+        "THRESHOLD" : "",
+        "REDIRECTION": "true",
+        "USERNAMES" : ["admin"],
+        "PASSWORDS" : ["Nethesis,1234"],
+        "COOKIES" : "true"
+      }
+    ]
+  }
+}

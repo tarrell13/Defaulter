@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": ["joomla"],
+    "CONFIGURATION": [
+      {
+        "MODELS": ["2020"],
+        "AUTHENTICATION": "form",
+	"TOKEN_URI": "/administrator/index.php",
+        "URI": {
+          "GET": [],
+          "POST": ["/administrator/index.php"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "username",
+          "PASS_PARAMETER": "passwd",
+          "DYNAMIC": [],
+          "STATIC": {"option" : "com_login", "task" : "login"}
+        },
+        "SUCCESS_TOKENS": ["control panel", "logout"],
+        "FAILURE_TOKENS": ["Username and password do not match"],
+        "THRESHOLD" : "",
+	    "REDIRECTION" : "true",
+        "USERNAMES" : [],
+        "PASSWORDS" : [],
+        "COOKIES" : "true"
+      }
+    ]
+  }
+}

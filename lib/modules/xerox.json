@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": ["xerox"],
+    "CONFIGURATION": [
+      {
+        "MODELS":  ["workcentre"],
+        "AUTHENTICATION": "form",
+	"TOKEN_URI" : "/properties/authentication/login.php",
+        "URI": {
+          "GET": [],
+          "POST": ["/userpost/xerox.set"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "webUsername",
+          "PASS_PARAMETER": "webPassword",
+          "DYNAMIC": [],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": ["200","logout"],
+        "FAILURE_TOKENS": ["invalid"],
+        "THRESHOLD" : "",
+     	"REDIRECTION" : "false",
+        "COOKIES" : "true",
+        "USERNAMES" : ["admin"],
+        "PASSWORDS" : ["1111"]
+      }
+    ]
+  }
+}

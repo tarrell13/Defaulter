@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": ["ManageEngine"],
+    "CONFIGURATION": [
+      {
+        "MODELS": ["servicedesk plus"],
+        "AUTHENTICATION": "form",
+        "TOKEN_URI": "/",
+        "URI": {
+          "GET": [],
+          "POST": ["/j_security_check"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "j_username",
+          "PASS_PARAMETER": "j_password",
+          "DYNAMIC": [],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": ["logout","homepage"],
+        "FAILURE_TOKENS": ["incorrect"],
+        "THRESHOLD" : "",
+        "REDIRECTION": "true",
+        "USERNAMES" : [],
+        "PASSWORDS" : [],
+        "COOKIES" : "true"
+      }
+    ]
+  }
+}

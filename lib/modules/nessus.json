@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": ["nessus"],
+    "CONFIGURATION": [
+      {
+        "MODELS": ["Common"],
+        "AUTHENTICATION": "api",
+        "TOKEN_URI": "",
+        "URI": {
+          "GET": [],
+          "POST": ["/session"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "username",
+          "PASS_PARAMETER": "password",
+          "DYNAMIC": [],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": ["200","token"],
+        "FAILURE_TOKENS": ["401"],
+        "THRESHOLD" : "",
+        "REDIRECTION": "",
+        "USERNAMES" : [],
+        "PASSWORDS" : [],
+        "COOKIES" : ""
+      }
+    ]
+  }
+}

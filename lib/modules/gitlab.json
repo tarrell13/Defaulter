@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": ["gitlab"],
+    "CONFIGURATION": [
+      {
+        "MODELS": ["enterprise"],
+        "AUTHENTICATION": "form",
+        "TOKEN_URI": "/users/sign_in",
+        "URI": {
+          "GET": [],
+          "POST": ["/users/sign_in"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "user[login]",
+          "PASS_PARAMETER": "user[password]",
+          "DYNAMIC": [],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": ["sign out","projects"],
+        "FAILURE_TOKENS": ["200","invalid login"],
+        "THRESHOLD" : "",
+        "REDIRECTION": "true",
+        "USERNAMES" : [],
+        "PASSWORDS" : [],
+        "COOKIES" : "true"
+      }
+    ]
+  }
+}
