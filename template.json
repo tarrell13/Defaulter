@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": [],
+    "CONFIGURATION": [
+      {
+        "MODELS": [],
+        "AUTHENTICATION": "",
+        "TOKEN_URI": "",
+        "URI": {
+          "GET": [],
+          "POST": []
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "",
+          "DYNAMIC": [],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": [],
+        "FAILURE_TOKENS": [],
+        "THRESHOLD" : "",
+        "REDIRECTION": "",
+        "USERNAMES" : [],
+        "PASSWORDS" : [],
+        "COOKIES" : ""
+      }
+    ]
+  }
+}
