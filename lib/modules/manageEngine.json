@@ -17,7 +17,7 @@
           "STATIC": {}
         },
         "SUCCESS_TOKENS": ["logout","homepage"],
-        "FAILURE_TOKENS": ["incorrect"],
+        "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
         "REDIRECTION": "true",
         "USERNAMES" : [],

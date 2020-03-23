@@ -16,10 +16,10 @@
           "DYNAMIC": ["form_build_id"],
           "STATIC": {"form_id" : "user_login_form", "op" : "Log in"}
         },
-        "SUCCESS_TOKENS": ["303"],
-        "FAILURE_TOKENS": ["200"],
+        "SUCCESS_TOKENS": ["logout"],
+        "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
-	    "REDIRECTION" : "",
+	    "REDIRECTION" : "true",
         "USERNAMES" : [],
         "PASSWORDS" : [],
         "COOKIES" : "true"

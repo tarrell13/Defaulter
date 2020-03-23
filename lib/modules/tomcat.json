@@ -16,7 +16,7 @@
         "STATIC": {}
       },
       "SUCCESS_TOKENS": ["200"],
-      "FAILURE_TOKENS": ["403" , "401"],
+      "FAILURE_TOKENS": [],
       "THRESHOLD": "2",
       "REDIRECTION": "false",
       "COOKIES" : "false",

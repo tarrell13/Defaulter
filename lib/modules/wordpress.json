@@ -16,10 +16,10 @@
           "DYNAMIC": ["redirect_to"],
           "STATIC": { "wp-submit" : "Log In", "testcookie" : "1"}
         },
-        "SUCCESS_TOKENS": ["302"],
-        "FAILURE_TOKENS": ["unknown", "incorrect"],
+        "SUCCESS_TOKENS": ["logout"],
+        "FAILURE_TOKENS": [],
         "THRESHOLD" : "3",
-	    "REDIRECTION" : "false",
+	    "REDIRECTION" : "true",
         "COOKIES" :"true",
         "USERNAMES" : ["wp", "admin"],
         "PASSWORDS" : ["wp", "admin", "password","admin"]

@@ -17,7 +17,7 @@
           "STATIC": {"login" : "Login"}
         },
         "SUCCESS_TOKENS": ["200","dashboard","logout"],
-        "FAILURE_TOKENS": ["incorrect"],
+        "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
         "REDIRECTION": "true",
         "USERNAMES" : ["admin"],

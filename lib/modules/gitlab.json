@@ -17,7 +17,7 @@
           "STATIC": {}
         },
         "SUCCESS_TOKENS": ["sign out","projects"],
-        "FAILURE_TOKENS": ["200","invalid login"],
+        "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
         "REDIRECTION": "true",
         "USERNAMES" : [],

@@ -17,7 +17,7 @@
           "STATIC": {"option" : "com_login", "task" : "login"}
         },
         "SUCCESS_TOKENS": ["control panel", "logout"],
-        "FAILURE_TOKENS": ["Username and password do not match"],
+        "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
 	    "REDIRECTION" : "true",
         "USERNAMES" : [],
