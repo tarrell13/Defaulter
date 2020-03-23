@@ -227,8 +227,9 @@ class Arguments(object):
             else:
                 self.user_param = "defaults"
 
-            if options.auth_type.lower() in ["form","api","basic"]:
-                self.auth_type = options.auth.lower()
+            if options.auth_type:
+                if options.auth_type.lower() in ["form","api","basic"]:
+                    self.auth_type = options.auth_type.lower()
             else:
                 self.auth_type = "defaults"
 
