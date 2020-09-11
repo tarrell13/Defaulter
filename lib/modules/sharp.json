@@ -1,0 +1,29 @@
+{
+  "STRUCTURE" : {
+    "FINGERPRINTS": [ "Sharp Global Home Page" ],
+    "CONFIGURATION": [
+      {
+        "MODELS": [ "MX-M465N" ],
+        "AUTHENTICATION": "form",
+        "TOKEN_URI": "/login.html?/main.html",
+        "URI": {
+          "GET": [],
+          "POST": ["login.html?/main"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "ggt_textbox%2810006%29",
+          "DYNAMIC": [],
+          "STATIC": { "action": "loginbtn", "ordinate": "0", "ggt_hidden%2810008%29": "3" }
+        },
+        "SUCCESS_TOKENS": [ "302" ],
+        "FAILURE_TOKENS": [ "200" ],
+        "THRESHOLD" : "",
+        "REDIRECTION": "true",
+        "USERNAMES" : [],
+        "PASSWORDS" : [ "admin" ],
+        "COOKIES" : "true"
+      }
+    ]
+  }
+}
