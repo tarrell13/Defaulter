@@ -6,6 +6,8 @@ from lib.core.resources import Resources
 from lib.core.application import Application
 from lib.core.authenticator import Authenticator
 from lib.core.host import Host
+from seleniumrequests import Firefox
+import selenium
 import threading
 import sys
 
@@ -22,6 +24,7 @@ VERSION = {
 
 host_objects = []
 application_list = []
+
 
 class Puppet(object):
 
@@ -87,16 +90,19 @@ class Puppet(object):
         return
 
     def CreateHostObjects(self):
-
+        """ Creates host Objects Using the Selenium Headless Driver """
         global host_objects
+
+        options = selenium.webdriver.firefox.options.Options()
+        options.headless = True
+        driver = Firefox(options=options)
 
         self.output.creationOutput(host=True)
 
         for host in self.arguments.hosts:
-            temp = Host(host,self.arguments)
+            temp = Host(host,self.arguments, driver=driver)
             if temp.is_alive:
                 host_objects.append(temp)
-
         return
 
     def CreateApplicationList(self):
