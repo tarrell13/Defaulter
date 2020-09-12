@@ -79,6 +79,10 @@ class Authenticator(object):
 
         return True
 
+    def PerformEventAuthentication(self):
+        """ Authenticate account using web page onclick events """
+        pass
+
     # Reserved for API Authentication Schemes
     def PerformApiAuthentication(self):
         return
