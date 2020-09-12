@@ -23,9 +23,23 @@ class Application(object):
         self.parameters = None
         self.cookies = None
         self.redirection = None
+        self.submission = None
+        self.empty_user = False
+
+        """ Success V2 Test """
+        self.success_tokensv2 = None
+
+        """ For Event Based Submission """
+        self.element_by_name = False
+        self.element_by_id = False
 
         # Initialize host list
         self.host_list = host_list
+
+    def CheckEmptyUser(self):
+        """ Checks If the Application Utilizes Both Username and/or Password """
+        if self.passwords and not self.usernames:
+            self.empty_user = True
 
     @property
     def information(self):
@@ -72,7 +86,8 @@ class Application(object):
             self.cookies = self.DATA["STRUCTURE"]["CONFIGURATION"][0]["COOKIES"]
             self.redirection = self.DATA["STRUCTURE"]["CONFIGURATION"][0]["REDIRECTION"]
             self.token_uri = self.DATA["STRUCTURE"]["CONFIGURATION"][0]["TOKEN_URI"]
-
+            self.success_tokensv2 = self.DATA["STRUCTURE"]["CONFIGURATION"][0]["SUCCESSV2"]
+            self.submission = self.DATA["STRUCTURE"]["CONFIGURATION"][0]["SUBMISSION"]
 
         elif self.arguments.mod_config != "defaults":
             for make,config in self.arguments.mod_config.items():
@@ -90,8 +105,10 @@ class Application(object):
                     self.cookies = self.DATA["STRUCTURE"]["CONFIGURATION"][config]["COOKIES"]
                     self.redirection = self.DATA["STRUCTURE"]["CONFIGURATION"][config]["REDIRECTION"]
                     self.token_uri = self.DATA["STRUCTURE"]["CONFIGURATION"][config]["TOKEN_URI"]
-                    break
+                    self.success_tokensv2 = self.DATA["STRUCTURE"]["CONFIGURATION"][config]["SUCCESSV2"]
+                    self.submission = self.DATA["STRUCTURE"]["CONFIGURATION"][config]["SUBMISSION"]
 
+                    #break
 
         elif self.application_model is not "unknown":
             self.get_uri = self.model_struct["URI"]["GET"]
@@ -106,6 +123,8 @@ class Application(object):
             self.authentication = self.model_struct["AUTHENTICATION"]
             self.token_uri = self.model_struct["TOKEN_URI"]
             self.redirection = self.model_struct["REDIRECTION"]
+            self.success_tokensv2 = self.model_struct["SUCCESSV2"]
+            self.submission = self.model_struct["SUBMISSION"]
 
         elif self.application_model is "unknown":
 
@@ -135,8 +154,11 @@ class Application(object):
             self.cookies = self.DATA["STRUCTURE"]["CONFIGURATION"][index]["COOKIES"]
             self.redirection = self.DATA["STRUCTURE"]["CONFIGURATION"][index]["REDIRECTION"]
             self.token_uri = self.DATA["STRUCTURE"]["CONFIGURATION"][index]["TOKEN_URI"]
+            self.success_tokensv2 = self.DATA["STRUCTURE"]["CONFIGURATION"][index]["SUCCESSV2"]
+            self.submission = self.DATA["STRUCTURE"]["CONFIGURATION"][index]["SUBMISSION"]
 
         self.ParseArgumentsIntoStructure()
+        self.CheckEmptyUser()
 
     def ParseArgumentsIntoStructure(self):
 

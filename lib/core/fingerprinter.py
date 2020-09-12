@@ -46,6 +46,9 @@ class Fingerprinter(object):
                             else:
                                 continue
 
-
         if self.arguments.only_fingerprint:
             sys.exit()
+
+    def FingerUpdate(self):
+        """ Updated Finger print sing response headers test """
+        pass

@@ -10,6 +10,11 @@
           "GET": [],
           "POST": ["/session"]
         },
+        "SUBMISSION": {
+          "USER": "log",
+          "PASS": "pwd",
+          "SUBMIT": "wp-submit"
+        },
         "PARAMETERS": {
           "USER_PARAMETER": "username",
           "PASS_PARAMETER": "password",
@@ -22,7 +27,13 @@
         "REDIRECTION": "",
         "USERNAMES" : [],
         "PASSWORDS" : [],
-        "COOKIES" : ""
+        "COOKIES" : "",
+        "SUCCESSV2": {
+          "STATUS_CODE": [],
+          "COOKIES": ["wordpress_logged_in"],
+          "URL": [],
+          "SOURCE": ["action=logout"]
+        }
       }
     ]
   }

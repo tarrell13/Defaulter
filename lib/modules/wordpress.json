@@ -1,6 +1,10 @@
 {
   "STRUCTURE" : {
     "FINGERPRINTS": ["wordpress"],
+    "FINGERV2": {
+      "COOKIES": [],
+      "SOURCE": ["wordpress"]
+    },
     "CONFIGURATION": [
       {
         "MODELS":  ["WordPress 5"],
@@ -16,13 +20,24 @@
           "DYNAMIC": ["redirect_to"],
           "STATIC": { "wp-submit" : "Log In", "testcookie" : "1"}
         },
+        "SUBMISSION": {
+          "USER": "log",
+          "PASS": "pwd",
+          "SUBMIT": "wp-submit"
+        },
         "SUCCESS_TOKENS": ["logout"],
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "3",
 	    "REDIRECTION" : "true",
         "COOKIES" :"true",
         "USERNAMES" : ["wp", "admin"],
-        "PASSWORDS" : ["wp", "admin", "password","admin"]
+        "PASSWORDS" : ["wp", "admin", "password","admin"],
+        "SUCCESSV2": {
+          "STATUS_CODE": [],
+          "COOKIES": ["wordpress_logged_in"],
+          "URL": [],
+          "SOURCE": ["action=logout"]
+        }
       }
     ]
   }

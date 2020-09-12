@@ -2,6 +2,8 @@
 
 from bs4 import BeautifulSoup
 import requests
+import re
+
 
 class Host(object):
 
@@ -18,6 +20,7 @@ class Host(object):
         self.valid_defaults = {}
         self.timedOut = False
         self.sample = None
+        self.refresh_url = None
         self.driver = driver
 
         if self.url.endswith("/"):
@@ -26,8 +29,8 @@ class Host(object):
         if self.scanned is False:
             self.RetrieveSampleTest()
 
-    ''' Retrieves sample for fingerprinting '''
     def RetrieveSample(self):
+        """ Retrieves sample for fingerprinting """
         try:
             response = requests.get(self.url, verify=False, timeout=self.arguments.timeout,proxies=self.arguments.proxy,allow_redirects=True)
             if response.status_code:
@@ -38,13 +41,12 @@ class Host(object):
 
     def meta_refresh(self, content):
         """ Determines if page root has a redirect to true page """
-        soup = BeautifulSoup(content.lower(), features="lxml")
-
-        result = soup.find("meta", attrs={"http-equiv": "refresh"})
+        soup = BeautifulSoup(content, features="lxml")
+        result = soup.find("meta", attrs={"http-equiv": re.compile("^refresh$", re.IGNORECASE)})
         if result:
             wait, text = result["content"].split(";")
             if text.strip().lower().startswith("url="):
-                self.url = text[5:]
+                self.refresh_url = text[5:].replace("\'", "")
                 return True
         return False
 
@@ -55,7 +57,7 @@ class Host(object):
                                            proxies=self.arguments.proxy, allow_redirects=True)
             if response.status_code:
                 if self.meta_refresh(response.content.decode()):
-                    response = self.driver.request("GET", self.url, verify=False, timeout=self.arguments.timeout,
+                    response = self.driver.request("GET", self.url+self.refresh_url, verify=False, timeout=self.arguments.timeout,
                                                    proxies=self.arguments.proxy, allow_redirects=True)
                     if response.status_code:
                         self.is_alive = True
@@ -65,4 +67,3 @@ class Host(object):
                     self.sample = response.text.lower()
         except Exception as error:
             self.is_alive = False
-

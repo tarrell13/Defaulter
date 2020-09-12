@@ -3,24 +3,46 @@
     "FINGERPRINTS": [ "Sharp Global Home Page" ],
     "CONFIGURATION": [
       {
-        "MODELS": [ "MX-M465N" ],
+        "MODELS": [ "MX-M465N", "MX-M266N"],
         "AUTHENTICATION": "form",
         "TOKEN_URI": "/login.html?/main.html",
         "URI": {
           "GET": [],
-          "POST": ["login.html?/main"]
+          "POST": ["/login.html?/main.html"]
         },
         "PARAMETERS": {
-          "USER_PARAMETER": "",
-          "PASS_PARAMETER": "ggt_textbox%2810006%29",
-          "DYNAMIC": [],
-          "STATIC": { "action": "loginbtn", "ordinate": "0", "ggt_hidden%2810008%29": "3" }
+          "USER_PARAMETER": "NONE",
+          "PASS_PARAMETER": "ggt_textbox(10006)",
+          "DYNAMIC": [ "ggt_hidden(10008)", "action", "ordinate" ],
+          "STATIC": {}
         },
         "SUCCESS_TOKENS": [ "302" ],
         "FAILURE_TOKENS": [ "200" ],
         "THRESHOLD" : "",
         "REDIRECTION": "true",
-        "USERNAMES" : [],
+        "USERNAMES" : [ "NONE" ],
+        "PASSWORDS" : [ "admin" ],
+        "COOKIES" : "true"
+      },
+      {
+        "MODELS": [ "MX-B355W" ],
+        "AUTHENTICATION": "form",
+        "TOKEN_URI": "/login.html?/main.html",
+        "URI": {
+          "GET": [],
+          "POST": ["/login.html?/main.html"]
+        },
+        "PARAMETERS": {
+          "USER_PARAMETER": "NONE",
+          "PASS_PARAMETER": "ggt_textbox(10007)",
+          "DYNAMIC": [ "ggt_hidden(10008)", "token2", "action", "ordinate" ],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": [ "302" ],
+        "FAILURE_TOKENS": [ "200" ],
+        "THRESHOLD" : "",
+        "REDIRECTION": "true",
+        "USERNAMES" : [ "NONE" ],
         "PASSWORDS" : [ "admin" ],
         "COOKIES" : "true"
       }

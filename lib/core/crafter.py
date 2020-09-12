@@ -10,12 +10,12 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class Crafter(object):
 
-    def __init__(self, arguments, username, password, url, application):
+    def __init__(self, arguments, username, password, host, application):
         self.application = application
         self.arguments = arguments
         self.username = username
         self.password = password
-        self.url = url
+        self.host = host
 
         # Data will populate depending on craft
         self.post_data = {}
@@ -51,14 +51,13 @@ class Crafter(object):
 
         return
 
-    # HTTP BASIC AUTHENTICATION
     def HttpBasicAuthentication(self):
+        """ Basic Authentication """
         credentials = base64.b64encode(b"%s:%s" % (self.username.encode(), self.password.encode())).decode()
         self.headers["Authorization"] = "Basic %s" % credentials
 
-    # FORM BASED AUTHENTICATION
     def FormBasedAuthentication(self):
-
+        """ Forms SUBMIT Based Authentication """
         if self.application.parameters["STATIC"]:
             self.StaticBuild()
 
@@ -66,6 +65,23 @@ class Crafter(object):
             self.DynamicBuild()
 
         return
+
+    def EventBasedAuthentication(self):
+        """ Crafts Event Driven Authentication Request """
+        if self.application.parameters["STATIC"]:
+            self.StaticBuild()
+
+        if self.application.parameters["DYNAMIC"] or self.application.token_uri:
+            self.DynamicBuild()
+
+        if self.application.element_by_name:
+            button = self.host.driver.find_element_by_name()
+        elif self.application.element_by_id:
+            button = self.host.driver.find_element_by_id()
+
+        button.click()
+        """ Need to Figure Out What Happens Here """
+        pass
 
     # Retrieve Dynamic Values and adds to Data
     def DynamicBuild(self):
@@ -88,7 +104,7 @@ class Crafter(object):
     def RetrieveSession(self):
 
         self.session = requests.Session()
-        self.response = self.session.get("%s%s" % (self.url, self.application.token_uri), verify=False,
+        self.response = self.session.get("%s%s" % (self.host.url, self.application.token_uri), verify=False,
                                          timeout=self.arguments.timeout,proxies=self.arguments.proxy)
 
     # Retrieve Hidden input Values that may be dynamic
@@ -96,7 +112,7 @@ class Crafter(object):
 
         if self.session is None:
             self.session = requests.Session()
-            self.response = self.session.get("%s%s" % (self.url, self.application.token_uri), verify=False,
+            self.response = self.session.get("%s%s" % (self.host.url, self.application.token_uri), verify=False,
                                              timeout=self.arguments.timeout,proxies=self.arguments.proxy)
 
         soup = bs4.BeautifulSoup(self.response.text, "html.parser")

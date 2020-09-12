@@ -225,3 +225,7 @@ Notes.txt
 host-file.txt
 # End of https://www.gitignore.io/api/macos,python,pycharm
 .idea/
+todos.txt
+.gitignore
+geckodriver.log
+venv/
