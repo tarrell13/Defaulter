@@ -11,9 +11,9 @@
           "POST": ["/session"]
         },
         "SUBMISSION": {
-          "USER": "log",
-          "PASS": "pwd",
-          "SUBMIT": "wp-submit"
+          "USER": "username",
+          "PASS": "password",
+          "SUBMIT": {"CLASS":  "", "NAME":  "", "ID":  ""}
         },
         "PARAMETERS": {
           "USER_PARAMETER": "username",
@@ -21,18 +21,18 @@
           "DYNAMIC": [],
           "STATIC": {}
         },
-        "SUCCESS_TOKENS": ["200","token"],
-        "FAILURE_TOKENS": ["401"],
+        "SUCCESS_TOKENS": [],
+        "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
         "REDIRECTION": "",
         "USERNAMES" : [],
         "PASSWORDS" : [],
         "COOKIES" : "",
         "SUCCESSV2": {
-          "STATUS_CODE": [],
-          "COOKIES": ["wordpress_logged_in"],
+          "STATUS_CODE": [200],
+          "COOKIES": [],
           "URL": [],
-          "SOURCE": ["action=logout"]
+          "SOURCE": ["token"]
         }
       }
     ]

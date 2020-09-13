@@ -5,24 +5,35 @@
       {
         "MODELS": ["Drupal 8"],
         "TOKEN_URI": "/user/login",
-	"AUTHENTICATION": "form",
+	    "AUTHENTICATION": "form",
         "URI": {
-          "GET": [""],
+          "GET": [],
           "POST": ["/user/login"]
         },
-        "PARAMETERS": {
-          "USER_PARAMETER": "name",
-          "PASS_PARAMETER": "pass",
-          "DYNAMIC": ["form_build_id"],
-          "STATIC": {"form_id" : "user_login_form", "op" : "Log in"}
+        "SUBMISSION": {
+          "USER": "name",
+          "PASS": "pass",
+          "SUBMIT": {"CLASS": "", "NAME": "op", "ID": "" }
         },
-        "SUCCESS_TOKENS": ["logout"],
+        "PARAMETERS": {
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "",
+          "DYNAMIC": [],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": [""],
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
-	    "REDIRECTION" : "true",
+	    "REDIRECTION" : "",
         "USERNAMES" : [],
         "PASSWORDS" : [],
-        "COOKIES" : "true"
+        "COOKIES" : "",
+        "SUCCESSV2": {
+          "STATUS_CODE": [200],
+          "COOKIES": [],
+          "URL": [],
+          "SOURCE": ["logout"]
+        }
       }
     ]
   }

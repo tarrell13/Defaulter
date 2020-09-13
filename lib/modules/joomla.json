@@ -5,24 +5,39 @@
       {
         "MODELS": ["2020"],
         "AUTHENTICATION": "form",
-	"TOKEN_URI": "/administrator/index.php",
+	    "TOKEN_URI": "/administrator/index.php",
         "URI": {
           "GET": [],
           "POST": ["/administrator/index.php"]
         },
-        "PARAMETERS": {
-          "USER_PARAMETER": "username",
-          "PASS_PARAMETER": "passwd",
-          "DYNAMIC": [],
-          "STATIC": {"option" : "com_login", "task" : "login"}
+        "SUBMISSION": {
+          "USER": "username",
+          "PASS": "passwd",
+          "SUBMIT": {
+            "CLASS": "login-button",
+            "NAME": "",
+            "ID": ""
+          }
         },
-        "SUCCESS_TOKENS": ["control panel", "logout"],
+        "PARAMETERS": {
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "",
+          "DYNAMIC": [],
+          "STATIC": {}
+        },
+        "SUCCESS_TOKENS": [],
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
-	    "REDIRECTION" : "true",
+	    "REDIRECTION" : "",
         "USERNAMES" : [],
         "PASSWORDS" : [],
-        "COOKIES" : "true"
+        "COOKIES" : "",
+        "SUCCESSV2": {
+          "STATUS_CODE": [],
+          "COOKIES": [],
+          "URL": [],
+          "SOURCE": ["Control Panel", "logout"]
+        }
       }
     ]
   }

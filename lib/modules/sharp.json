@@ -1,50 +1,52 @@
 {
   "STRUCTURE" : {
-    "FINGERPRINTS": [ "Sharp Global Home Page" ],
+    "FINGERPRINTS": [
+      "Sharp Global Home Page"
+    ],
     "CONFIGURATION": [
       {
-        "MODELS": [ "MX-M465N", "MX-M266N"],
+        "MODELS": [
+          "MX-M465N",
+          "MX-M266N"
+        ],
         "AUTHENTICATION": "form",
         "TOKEN_URI": "/login.html?/main.html",
         "URI": {
           "GET": [],
-          "POST": ["/login.html?/main.html"]
+          "POST": [
+            "/login.html?/main.html"
+          ]
         },
-        "PARAMETERS": {
-          "USER_PARAMETER": "NONE",
-          "PASS_PARAMETER": "ggt_textbox(10006)",
-          "DYNAMIC": [ "ggt_hidden(10008)", "action", "ordinate" ],
-          "STATIC": {}
-        },
-        "SUCCESS_TOKENS": [ "302" ],
-        "FAILURE_TOKENS": [ "200" ],
-        "THRESHOLD" : "",
-        "REDIRECTION": "true",
-        "USERNAMES" : [ "NONE" ],
-        "PASSWORDS" : [ "admin" ],
-        "COOKIES" : "true"
-      },
-      {
-        "MODELS": [ "MX-B355W" ],
-        "AUTHENTICATION": "form",
-        "TOKEN_URI": "/login.html?/main.html",
-        "URI": {
-          "GET": [],
-          "POST": ["/login.html?/main.html"]
-        },
-        "PARAMETERS": {
-          "USER_PARAMETER": "NONE",
-          "PASS_PARAMETER": "ggt_textbox(10007)",
-          "DYNAMIC": [ "ggt_hidden(10008)", "token2", "action", "ordinate" ],
-          "STATIC": {}
-        },
-        "SUCCESS_TOKENS": [ "302" ],
-        "FAILURE_TOKENS": [ "200" ],
-        "THRESHOLD" : "",
-        "REDIRECTION": "true",
-        "USERNAMES" : [ "NONE" ],
-        "PASSWORDS" : [ "admin" ],
-        "COOKIES" : "true"
+        "SUBMISSION": {
+          "USER": "",
+          "PASS": "ggt_textbox(10006)",
+          "SUBMIT": {
+            "CLASS": "adminloginbtn",
+            "NAME": "",
+            "ID": ""
+          },
+          "PARAMETERS": {
+            "USER_PARAMETER": "",
+            "PASS_PARAMETER": "",
+            "DYNAMIC": [],
+            "STATIC": {}
+          },
+          "SUCCESS_TOKENS": [],
+          "FAILURE_TOKENS": [],
+          "THRESHOLD": "",
+          "REDIRECTION": "",
+          "USERNAMES": [],
+          "PASSWORDS": [
+            "admin"
+          ],
+          "COOKIES": "",
+          "SUCCESSV2": {
+            "STATUS_CODE": [],
+            "COOKIES": [],
+            "URL": [],
+            "SOURCE": []
+          }
+        }
       }
     ]
   }

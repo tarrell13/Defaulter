@@ -10,19 +10,30 @@
           "GET": [],
           "POST": ["/users/sign_in"]
         },
+        "SUBMISSION": {
+          "USER": "user[login]",
+          "PASS": "user[password]",
+          "SUBMIT": {"CLASS":  "", "NAME":  "commit", "ID":  ""}
+        },
         "PARAMETERS": {
-          "USER_PARAMETER": "user[login]",
-          "PASS_PARAMETER": "user[password]",
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "",
           "DYNAMIC": [],
           "STATIC": {}
         },
-        "SUCCESS_TOKENS": ["sign out","projects"],
+        "SUCCESS_TOKENS": [],
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
-        "REDIRECTION": "true",
+        "REDIRECTION": "",
         "USERNAMES" : [],
         "PASSWORDS" : [],
-        "COOKIES" : "true"
+        "COOKIES" : "",
+        "SUCCESSV2": {
+          "STATUS_CODE": [],
+          "COOKIES": [],
+          "URL": [],
+          "SOURCE": ["users/sign_out"]
+        }
       }
     ]
   }

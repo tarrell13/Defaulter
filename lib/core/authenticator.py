@@ -117,6 +117,37 @@ class Authenticator(object):
 
         elif application.authentication == "api" or application.authentication == "basic":
             """ API/BASIC Authentication Uses Request Response """
+            if application.success_tokensv2["COOKIES"]:
+                for cookie in application.success_tokensv2["COOKIES"]:
+                    if cookie in current_cookies:
+                        authenticated = True
+                    else:
+                        authenticated = False
+                        break
+
+            if application.success_tokensv2["URL"]:
+                for url in application.success_tokensv2["URL"]:
+                    if re.search(url, current_url):
+                        authenticated = True
+                    else:
+                        authenticated = False
+                        break
+
+            if application.success_tokensv2["SOURCE"]:
+                for phrase in application.success_tokensv2["SOURCE"]:
+                    if re.search(phrase, response.content.decode()):
+                        authenticated = True
+                    else:
+                        authenticated = False
+                        break
+
+            if application.success_tokensv2["STATUS_CODE"]:
+                for code in application.success_tokensv2["STATUS_CODE"]:
+                    if response.status_code == code:
+                        authenticated = True
+                    else:
+                        authenticated = False
+
             if authenticated:
                 return True
 
@@ -162,8 +193,17 @@ class Authenticator(object):
                         passwd_element = host.driver.find_element_by_name(application.submission["PASS"])
                         passwd_element.send_keys(password)
 
-                        submit_element = host.driver.find_element_by_name(application.submission["SUBMIT"])
-                        submit_element.click()
+                        submit_element = None
+
+                        if application.submission["SUBMIT"]["CLASS"]:
+                            submit_element = host.driver.find_element_by_class_name(application.submission["SUBMIT"]["CLASS"])
+                        elif application.submission["SUBMIT"]["NAME"]:
+                            submit_element = host.driver.find_element_by_name(application.submission["SUBMIT"]["NAME"])
+                        elif application.submission["SUBMIT"]["ID"]:
+                            submit_element = host.driver.find_element_by_id(application.submission["SUBMIT"]["ID"])
+
+                        if submit_element:
+                            submit_element.click()
 
                         source = host.driver.page_source
                         cookies = host.driver.get_cookies()
@@ -174,19 +214,20 @@ class Authenticator(object):
                             for cookie in cookies:
                                 cookie_list.append(cookie["name"])
 
-                    except selenium.common.exceptions.WebDriverException:
+                    except selenium.common.exceptions.WebDriverException as e:
+                        print(e)
                         host.timedOut = True
                         self.output.errorOutput(timeout=host)
                         break
 
                     if self.CheckAuthenticationTest(application, page_source=source, current_cookies=cookie_list,
                                                     current_url=current_url ):
-                    #if self.CheckAuthentication(source, application.success_tokens,application.failure_tokens):
                         host.valid_defaults[post] = {}
                         host.valid_defaults[post][username] = password
                         host.defaults = True
                         host.scanned = True
                         host.attempts = 0
+                        host.driver.delete_all_cookies()
                         self.output.TermOutput(host=host, validUrl=post,
                                                username=username, password=password)
                         if self.arguments.output_file:
@@ -208,13 +249,8 @@ class Authenticator(object):
                     host.timeOut = False
                     break
 
-    # Reserved for API Authentication Schemes
-    def PerformApiAuthentication(self):
-        return
-
-    # Reserved for FORM authentication
-    def PerformFormAuthentication(self, host, application):
-
+    def PerformAPIAuthentication(self, host, application):
+        """ API BASED AUTHENTICATION """
         for post in application.post_uri:
             if self.arguments.stop_host and host.defaults:
                 time.sleep(0.5)
@@ -235,7 +271,6 @@ class Authenticator(object):
                 host.attempts = 0
 
                 for password in application.passwords:
-                    # Threshold Respect
                     if application.threshold == 0:
                         time.sleep(0.5)
                     elif host.defaults is False and host.attempts < application.threshold:
@@ -248,16 +283,15 @@ class Authenticator(object):
 
                     try:
                         response = craft.session.post("%s%s" % (host.url, post), verify=False
-                                                      , timeout=self.arguments.timeout, data=craft.post_data
-                                                      , allow_redirects=application.redirection,
+                                                      ,timeout=self.arguments.timeout, data=craft.post_data
+                                                      ,allow_redirects=application.redirection,
                                                       proxies=self.arguments.proxy)
                     except requests.exceptions.ReadTimeout:
                         host.timedOut = True
                         self.output.errorOutput(timeout=host)
                         break
 
-                    if self.CheckAuthentication(response, application.success_tokens,
-                                                application.failure_tokens):
+                    if self.CheckAuthenticationTest(application, response=response):
                         host.valid_defaults[post] = {}
                         host.valid_defaults[post][username] = password
                         host.defaults = True
@@ -274,7 +308,6 @@ class Authenticator(object):
                                                         password=password)
                         if self.arguments.output_file:
                             self.reporter.OutputTXTFile(host=(host.url,post,username,password))
-
 
                     # BREAK OUT PASSWORDS
                     if host.defaults:
@@ -364,10 +397,13 @@ class Authenticator(object):
             time.sleep(1)
 
             for host in application.host_list:
-                if application.authentication.lower() == "form" or application.authentication.lower() == "api":
+                if application.authentication.lower() == "form":
                     self.PerformFormAuthenticationTest(host,application)
                 elif application.authentication.lower() == "basic":
                     self.PerformBasicAuthentication(host,application)
+                elif application.authentication.lower() == "api":
+                    self.PerformAPIAuthentication(host, application)
 
                 host.scanned = True
+
         return

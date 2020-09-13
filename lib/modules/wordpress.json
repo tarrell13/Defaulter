@@ -23,15 +23,15 @@
         "SUBMISSION": {
           "USER": "log",
           "PASS": "pwd",
-          "SUBMIT": "wp-submit"
+          "SUBMIT": {"CLASS": "", "NAME": "wp-submit", "ID": "" }
         },
-        "SUCCESS_TOKENS": ["logout"],
+        "SUCCESS_TOKENS": [],
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "3",
-	    "REDIRECTION" : "true",
-        "COOKIES" :"true",
-        "USERNAMES" : ["wp", "admin"],
-        "PASSWORDS" : ["wp", "admin", "password","admin"],
+	    "REDIRECTION" : "",
+        "COOKIES" :"",
+        "USERNAMES" : [ "wp", "admin"],
+        "PASSWORDS" : ["wp", "admin", "password"],
         "SUCCESSV2": {
           "STATUS_CODE": [],
           "COOKIES": ["wordpress_logged_in"],
