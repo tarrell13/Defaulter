@@ -1,6 +1,6 @@
 {
   "STRUCTURE" : {
-    "FINGERPRINTS": ["moodle"],
+    "FINGERPRINTS": ["roundcube"],
     "CONFIGURATION": [
       {
         "MODELS": ["Common"],
@@ -8,23 +8,23 @@
         "TOKEN_URI": "",
         "URI": {
           "GET": [],
-          "POST": ["/login/index.php"]
+          "POST": ["/?_task=login"]
         },
         "SUBMISSION": {
           "USER": {
             "CLASS": "",
-            "NAME": "username",
+            "NAME": "_user",
             "ID": ""
           },
           "PASS": {
             "CLASS": "",
-            "NAME": "password",
+            "NAME": "_pass",
             "ID": ""
           },
           "SUBMIT": {
             "CLASS": "",
             "NAME": "",
-            "ID": "loginbtn"
+            "ID": "rcmloginsubmit"
           }
         },
         "PARAMETERS": {
@@ -37,14 +37,14 @@
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
         "REDIRECTION": "",
-        "USERNAMES" : [],
-        "PASSWORDS" : [],
+        "USERNAMES" : [""],
+        "PASSWORDS" : [""],
         "COOKIES" : "",
         "SUCCESSV2": {
           "STATUS_CODE": [],
           "COOKIES": [],
           "URL": [],
-          "SOURCE": ["login/logout.php"]
+          "SOURCE": []
         }
       }
     ]

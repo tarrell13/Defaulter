@@ -18,13 +18,22 @@
           ]
         },
         "SUBMISSION": {
-          "USER": "",
-          "PASS": "ggt_textbox(10006)",
+          "USER": {
+            "CLASS": "lll",
+            "NAME": "",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "ggt_textbox(10006)",
+            "ID": ""
+          },
           "SUBMIT": {
             "CLASS": "adminloginbtn",
             "NAME": "",
             "ID": ""
-          },
+          }
+        },
           "PARAMETERS": {
             "USER_PARAMETER": "",
             "PASS_PARAMETER": "",
@@ -47,7 +56,6 @@
             "SOURCE": []
           }
         }
-      }
     ]
   }
 }

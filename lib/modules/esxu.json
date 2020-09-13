@@ -1,6 +1,6 @@
 {
   "STRUCTURE" : {
-    "FINGERPRINTS": ["moodle"],
+    "FINGERPRINTS": ["esxUiApp"],
     "CONFIGURATION": [
       {
         "MODELS": ["Common"],
@@ -8,23 +8,23 @@
         "TOKEN_URI": "",
         "URI": {
           "GET": [],
-          "POST": ["/login/index.php"]
+          "POST": ["/ui/#/login"]
         },
         "SUBMISSION": {
           "USER": {
             "CLASS": "",
-            "NAME": "username",
-            "ID": ""
+            "NAME": "",
+            "ID": "username"
           },
           "PASS": {
             "CLASS": "",
-            "NAME": "password",
-            "ID": ""
+            "NAME": "",
+            "ID": "password"
           },
           "SUBMIT": {
             "CLASS": "",
             "NAME": "",
-            "ID": "loginbtn"
+            "ID": "submit"
           }
         },
         "PARAMETERS": {
@@ -42,13 +42,11 @@
         "COOKIES" : "",
         "SUCCESSV2": {
           "STATUS_CODE": [],
-          "COOKIES": [],
-          "URL": [],
-          "SOURCE": ["login/logout.php"]
+          "COOKIES": ["vmware_soap_session"],
+          "URL": ["/ui/#/host"],
+          "SOURCE": []
         }
       }
     ]
   }
 }
-
-

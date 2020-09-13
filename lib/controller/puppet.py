@@ -50,6 +50,10 @@ class Puppet(object):
         else:
             self.output.InformationalOutput(mode=False)
 
+        options = selenium.webdriver.firefox.options.Options()
+        options.headless = True
+        self.driver = Firefox(options=options)
+
         # Threaded Methods For Faster Creation
         self.HOST_CREATION = threading.Thread(target=self.CreateHostObjects())
         self.APP_CREATION = threading.Thread(target=self.CreateApplicationList())
@@ -86,21 +90,17 @@ class Puppet(object):
 
         # 5) Performing Scanning Procedure
         self.ScanProcedure()
-
+        self.driver.close()
         return
 
     def CreateHostObjects(self):
         """ Creates host Objects Using the Selenium Headless Driver """
         global host_objects
 
-        options = selenium.webdriver.firefox.options.Options()
-        options.headless = True
-        driver = Firefox(options=options)
-
         self.output.creationOutput(host=True)
 
         for host in self.arguments.hosts:
-            temp = Host(host,self.arguments, driver=driver)
+            temp = Host(host,self.arguments, driver=self.driver)
             if temp.is_alive:
                 host_objects.append(temp)
         return
@@ -133,7 +133,6 @@ class Puppet(object):
                     self.application_objects.append(temp_app)
         return
 
-
     def FingerPrintTargets(self):
         self.output.creationOutput(fingerprint=True)
         Fingerprinter(host_objects, application_list.applications,self.output,self.arguments)
@@ -152,8 +151,9 @@ class Puppet(object):
 
         if self.application_objects:
             self.output.creationOutput(startScan=True)
-            Authenticator(self.application_objects,self.output,self.arguments).PerformAuthentication()
+            Authenticator(self.application_objects,self.output,self.arguments).PerformAuthentication(self.driver)
         else:
+            self.driver.close()
             sys.exit()
 
         return

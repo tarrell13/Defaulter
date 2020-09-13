@@ -3,6 +3,7 @@
 import re
 import sys
 
+
 class Fingerprinter(object):
 
     def __init__(self, host_list, application_list, output, arguments):
@@ -49,6 +50,6 @@ class Fingerprinter(object):
         if self.arguments.only_fingerprint:
             sys.exit()
 
-    def FingerUpdate(self):
-        """ Updated Finger print sing response headers test """
+    def mark(self):
+        """ Updated FingerPrint Using version 2 Configs """
         pass

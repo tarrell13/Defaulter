@@ -52,7 +52,7 @@ class TerminalOutput(object):
 
 
     def errorOutput(self, host=False, applicationList=False, application=False, fingerprint=False, scan=False
-                    ,module=False, file=False, timeout=False):
+                    ,module=False, file=False, timeout=False, element_issue=False, increase_timing=False):
 
         time = datetime.now().strftime("%H:%M:%S")
 
@@ -72,6 +72,12 @@ class TerminalOutput(object):
 
         if timeout:
             print(Colors.yellow+"{0} :: ".format(time)+"(!) %s timed out skipping" %timeout.url)
+
+        if element_issue:
+            print(Colors.yellow+"{0} :: ".format(time)+"(!) %s Issue Retrieving Page Elements skipping" %element_issue.url)
+
+        if increase_timing:
+            print(Colors.yellow+"{0} :: ".format(time)+"(!) Issue Retrieving Page Elements Increasing Page Delay")
 
         return
 

@@ -83,7 +83,6 @@ class Authenticator(object):
     def CheckAuthenticationTest(self, application, page_source=None, current_cookies=None, current_url=None,
                                 response=None):
         """ Updated Authentication Check Based on Updated Config """
-
         authenticated = False
 
         if application.authentication == "form":
@@ -153,8 +152,14 @@ class Authenticator(object):
 
         return False
 
-    def PerformFormAuthenticationTest(self, host, application):
+    def PerformFormAuthenticationTest(self, host, application, driver):
         """ Authenticate account using web page onclick events """
+
+        """ Time Delay Tracker For Some Page Loads, will increment 3 times before skipping host  """
+        page_delay = 1
+        page_increment_count = 0
+        skip_host = False
+
         for post in application.post_uri:
             if self.arguments.stop_host and host.defaults:
                 time.sleep(0.5)
@@ -183,51 +188,95 @@ class Authenticator(object):
                         break
 
                     """ Using Selenium Drivers Retrieve, Send and Submit """
-                    try:
-                        host.driver.get("%s%s" %(host.url, post))
+                    while True:
 
-                        if not application.empty_user:
-                            user_element = host.driver.find_element_by_name(application.submission["USER"])
-                            user_element.send_keys(username)
+                        try:
 
-                        passwd_element = host.driver.find_element_by_name(application.submission["PASS"])
-                        passwd_element.send_keys(password)
+                            driver.delete_all_cookies()
+                            driver.refresh()
+                            driver.get("%s%s" % (host.url, post))
+                            time.sleep(page_delay)
 
-                        submit_element = None
+                            user_element = None
+                            passwd_element = None
+                            submit_element = None
 
-                        if application.submission["SUBMIT"]["CLASS"]:
-                            submit_element = host.driver.find_element_by_class_name(application.submission["SUBMIT"]["CLASS"])
-                        elif application.submission["SUBMIT"]["NAME"]:
-                            submit_element = host.driver.find_element_by_name(application.submission["SUBMIT"]["NAME"])
-                        elif application.submission["SUBMIT"]["ID"]:
-                            submit_element = host.driver.find_element_by_id(application.submission["SUBMIT"]["ID"])
+                            """ Retrieve Username Element """
+                            if not application.empty_user:
+                                if application.submission["USER"]["CLASS"]:
+                                    user_element = driver.find_element_by_class_name(application.submission["USER"]["CLASS"])
+                                elif application.submission["USER"]["NAME"]:
+                                    user_element = driver.find_element_by_name(application.submission["USER"]["NAME"])
+                                elif application.submission["USER"]["ID"]:
+                                    user_element = driver.find_element_by_id(application.submission["USER"]["ID"])
 
-                        if submit_element:
-                            submit_element.click()
+                                user_element.send_keys(username)
 
-                        source = host.driver.page_source
-                        cookies = host.driver.get_cookies()
-                        current_url = host.driver.current_url
+                            """ Retrieve Password Element """
+                            if application.submission["PASS"]["CLASS"]:
+                                passwd_element = driver.find_element_by_class_name(application.submission["PASS"]["CLASS"])
+                            elif application.submission["PASS"]["NAME"]:
+                                passwd_element = driver.find_element_by_name(application.submission["PASS"]["NAME"])
+                            elif application.submission["PASS"]["ID"]:
+                                passwd_element = driver.find_element_by_id(application.submission["PASS"]["ID"])
 
-                        cookie_list = []
-                        if cookies:
-                            for cookie in cookies:
-                                cookie_list.append(cookie["name"])
+                            passwd_element.send_keys(password)
 
-                    except selenium.common.exceptions.WebDriverException as e:
-                        print(e)
-                        host.timedOut = True
-                        self.output.errorOutput(timeout=host)
+                            """ Retrieve Submission Element """
+                            if application.submission["SUBMIT"]["CLASS"]:
+                                submit_element = driver.find_element_by_class_name(application.submission["SUBMIT"]["CLASS"])
+                            elif application.submission["SUBMIT"]["NAME"]:
+                                submit_element = driver.find_element_by_name(application.submission["SUBMIT"]["NAME"])
+                            elif application.submission["SUBMIT"]["ID"]:
+                                submit_element = driver.find_element_by_id(application.submission["SUBMIT"]["ID"])
+
+                            if submit_element:
+                                submit_element.click()
+                                time.sleep(page_delay)
+
+                            source = driver.page_source
+                            cookies = driver.get_cookies()
+                            current_url = driver.current_url
+
+                            cookie_list = []
+                            if cookies:
+                                for cookie in cookies:
+                                    cookie_list.append(cookie["name"])
+
+                        except selenium.common.exceptions.WebDriverException as e:
+                            print(e)
+                            if re.search("Unable to locate element", str(e)) and page_increment_count < 3:
+                                page_delay += 3
+                                page_increment_count += 1
+                                self.output.errorOutput(increase_timing=True)
+                                continue
+                            elif page_increment_count == 3:
+                                skip_host = True
+                                host.element_issue = True
+                                self.output.errorOutput(element_issue=host)
+                                break
+                            elif re.search("Alert", str(e)):
+                                driver.switchTo().alert().dismiss();
+                                continue
+                            else:
+                                host.timedOut = True
+                                self.output.errorOutput(timeout=host)
+                                break
+
+                        break
+
+                    if skip_host:
                         break
 
                     if self.CheckAuthenticationTest(application, page_source=source, current_cookies=cookie_list,
                                                     current_url=current_url ):
+
                         host.valid_defaults[post] = {}
                         host.valid_defaults[post][username] = password
                         host.defaults = True
                         host.scanned = True
                         host.attempts = 0
-                        host.driver.delete_all_cookies()
+                        page_increment_count = 0
                         self.output.TermOutput(host=host, validUrl=post,
                                                username=username, password=password)
                         if self.arguments.output_file:
@@ -243,6 +292,9 @@ class Authenticator(object):
                     # BREAK OUT PASSWORDS
                     if host.defaults:
                         break
+
+                if skip_host:
+                    break
 
                     # BREAK OUT USERNAMES
                 if host.timedOut:
@@ -387,7 +439,7 @@ class Authenticator(object):
 
         return
 
-    def PerformAuthentication(self):
+    def PerformAuthentication(self, driver):
 
         for application in self.application_objects:
             self.output.TermOutput(application=application)
@@ -398,7 +450,7 @@ class Authenticator(object):
 
             for host in application.host_list:
                 if application.authentication.lower() == "form":
-                    self.PerformFormAuthenticationTest(host,application)
+                    self.PerformFormAuthenticationTest(host,application, driver)
                 elif application.authentication.lower() == "basic":
                     self.PerformBasicAuthentication(host,application)
                 elif application.authentication.lower() == "api":

@@ -1,0 +1,42 @@
+{
+  "VENDOR": null,
+  "DEFAULT_USERS": [],
+  "DEFAULT_PASSWORDS": [],
+  "FINGERPRINTS": {
+    "HEADERS": {
+      "COOKIES": []
+    },
+    "PAGE_SOURCE": []
+  },
+  "CONFIGURATIONS": [{
+    "MODELS": [],
+    "AUTHENTICATION": null,
+    "URI": {
+      "GET": [],
+      "POST": []
+    },
+    "SUBMISSION": {
+          "USER": {
+            "CLASS": null,
+            "NAME": null,
+            "ID": null
+          },
+          "PASS": {
+            "CLASS": null,
+            "NAME": null,
+            "ID": null
+          },
+          "SUBMIT": {
+            "CLASS": null,
+            "NAME": null,
+            "ID": null
+          }
+        },
+    "SUCCESS": {
+          "STATUS_CODE": [],
+          "COOKIES": [],
+          "URI": null,
+          "PAGE_SOURCE": []
+        }
+  }]
+}

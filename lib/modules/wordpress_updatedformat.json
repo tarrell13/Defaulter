@@ -1,0 +1,42 @@
+{
+  "VENDOR": "WORDPRESS",
+  "DEFAULT_USERS": ["wp", "admin"],
+  "DEFAULT_PASSWORDS": ["wp", "admin", "password"],
+  "FINGERPRINTS": {
+    "HEADERS": {
+      "COOKIES": []
+    },
+    "PAGE_SOURCE": ["wordpress"]
+  },
+  "CONFIGURATIONS": [{
+    "MODELS": ["WordPress 5"],
+    "AUTHENTICATION": "FORM",
+    "URI": {
+      "GET": [],
+      "POST": ["/wp-login.php"]
+    },
+    "SUBMISSION": {
+          "USER": {
+            "CLASS": null,
+            "NAME": "log",
+            "ID": null
+          },
+          "PASS": {
+            "CLASS": null,
+            "NAME": "pwd",
+            "ID": null
+          },
+          "SUBMIT": {
+            "CLASS": null,
+            "NAME": "wp-submit",
+            "ID": null
+          }
+        },
+    "SUCCESS": {
+          "STATUS_CODE": null,
+          "COOKIES": ["wordpress_logged_in"],
+          "URI": null,
+          "PAGE_SOURCE": ["action=logout"]
+        }
+  }]
+}
