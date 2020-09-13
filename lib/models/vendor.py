@@ -8,6 +8,7 @@ class Vendor(object):
         self.vendor_prints = None
         self.vendor_users = None
         self.vendor_passwords = None
+        self.hosts = []
 
         if data["FINGERPRINTS"]:
             self.vendor_prints = Finger(data["FINGERPRINTS"])

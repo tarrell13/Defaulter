@@ -22,7 +22,21 @@ class Host(object):
         self.sample = None
         self.element_issue = False
         self.refresh_url = None
-        #self.driver = driver
+
+        """ VERSION 2 FIELDS
+        (1) protocol -> ( http | https )
+        (2) hostname_address -> Hostname or IP address
+        (3) vendor_name -> Enumerated Vendor
+        (4) vendor_model -> Enumerated Vendor Model
+        (5) Response -> Response For Fingering 
+        """
+
+        self.protocol = None
+        self.hostname_address = None
+        self.vendor_name = None
+        self.vendor_model = None
+        self.response = None
+        self.cookiejar = None
 
         if self.url.endswith("/"):
             self.url = self.url.rstrip("/")

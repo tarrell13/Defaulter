@@ -1,16 +1,21 @@
 # -*- coding: utf-8 -*-
 
+import urllib.parse
 import re
 import sys
 
 
 class Fingerprinter(object):
 
-    def __init__(self, host_list, application_list, output, arguments):
+    def __init__(self, host_list, application_list, output, arguments, modules=None):
         self.host_list = host_list
         self.application_list = application_list
         self.output = output
         self.arguments = arguments
+
+        """ TESTING UNDER Enumerate() """
+        # self.enumerate_vendor(modules)
+        # self.enumerate_model(modules)
 
         # Fingerprint Targets
         self.fingerprint()
@@ -50,6 +55,31 @@ class Fingerprinter(object):
         if self.arguments.only_fingerprint:
             sys.exit()
 
-    def mark(self):
+    def enumerate_vendor(self, modules):
         """ Updated FingerPrint Using version 2 Configs """
-        pass
+
+        for host in self.host_list:
+            for module in modules:
+                """ Match Any Specified Cookies """
+                if module.vendor_prints.cookies:
+                    if host.response.cookies.values():
+                        for response_cookie in host.response.cookies.values():
+                            for finger_cookie in module.vendor_prints.cookies:
+                                if re.search(str(urllib.parse.quote(finger_cookie)), str(response_cookie), re.IGNORECASE):
+                                    host.vendor_name = module.vender_name
+                                    module.hosts.append(host)
+                                    break
+
+                if module.vendor_prints.page_source:
+                    if re.search(module.vendor_prints.page_source, host.response.content().decode(), re.IGNORECASE):
+                        host.vendor_name = module.vender_name
+                        module.hosts.append(host)
+                        break
+
+    def enumerate_model(self, modules):
+        """ Enumerate Model After Mapping Make """
+        for module in modules:
+            if module.hosts:
+                for config in module.vendor_configs:
+                    for model in config.models:
+                        pass

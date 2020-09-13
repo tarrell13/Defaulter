@@ -4,7 +4,7 @@
   "DEFAULT_PASSWORDS": ["wp", "admin", "password"],
   "FINGERPRINTS": {
     "HEADERS": {
-      "COOKIES": []
+      "COOKIES": ["WP Cookie check"]
     },
     "PAGE_SOURCE": ["wordpress"]
   },
