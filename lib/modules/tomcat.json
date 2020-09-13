@@ -9,19 +9,42 @@
         "GET": ["/manager/html", "/host-manager/html"],
         "POST": []
       },
+      "SUBMISSION": {
+          "USER": {
+            "CLASS": "",
+            "NAME": "",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "",
+            "ID": ""
+          },
+          "SUBMIT": {
+            "CLASS": "",
+            "NAME": "",
+            "ID": ""
+          }
+        },
       "PARAMETERS": {
         "USER_PARAMETER": "",
         "PASS_PARAMETER": "",
         "DYNAMIC": [],
         "STATIC": {}
       },
-      "SUCCESS_TOKENS": ["200"],
+      "SUCCESS_TOKENS": [],
       "FAILURE_TOKENS": [],
-      "THRESHOLD": "2",
-      "REDIRECTION": "false",
-      "COOKIES" : "false",
+      "THRESHOLD": "",
+      "REDIRECTION": "true",
+      "COOKIES" : "",
       "USERNAMES": ["tomcat", "manager"],
-      "PASSWORDS": ["tomcat", "s3cret","manager","password"]
+      "PASSWORDS": ["tomcat", "s3cret","manager","password"],
+      "SUCCESSV2": {
+          "STATUS_CODE": [200],
+          "COOKIES": [],
+          "URL": [],
+          "SOURCE": []
+      }
     }
     ]
   }

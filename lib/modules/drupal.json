@@ -11,8 +11,16 @@
           "POST": ["/user/login"]
         },
         "SUBMISSION": {
-          "USER": "name",
-          "PASS": "pass",
+          "USER": {
+            "CLASS": "",
+            "NAME": "name",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "pass",
+            "ID": ""
+          },
           "SUBMIT": {"CLASS": "", "NAME": "op", "ID": "" }
         },
         "PARAMETERS": {

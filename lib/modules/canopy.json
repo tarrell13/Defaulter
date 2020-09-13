@@ -14,10 +14,27 @@
             "/login.cgi"
           ]
         },
+        "SUBMISSION": {
+          "USER": {
+            "CLASS": "",
+            "NAME": "CanopyUsername",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "CanopyPassword",
+            "ID": ""
+          },
+          "SUBMIT": {
+            "CLASS": "",
+            "NAME": "",
+            "ID": ""
+          }
+        },
         "PARAMETERS": {
-          "USER_PARAMETER": "CanopyUsername",
-          "PASS_PARAMETER": "CanopyPassword",
-          "STATIC": {"login" : "Login"},
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "",
+          "STATIC": {},
           "DYNAMIC": []
         },
         "SUCCESS_TOKENS": [
@@ -28,7 +45,13 @@
 	    "REDIRECTION": "",
         "COOKIES" : "",
         "USERNAMES" : [ "admin" ],
-        "PASSWORDS" : ["admin"]
+        "PASSWORDS" : ["admin"],
+        "SUCCESSV2": {
+            "STATUS_CODE": [],
+            "COOKIES": [],
+            "URL": [],
+            "SOURCE": ["logout"]
+          }
       }
     ]
   }

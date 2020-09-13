@@ -11,9 +11,21 @@
           "POST": ["/index.php/login"]
         },
         "SUBMISSION": {
-          "USER": "user",
-          "PASS": "password",
-          "SUBMIT": {"CLASS":  "", "NAME":  "", "ID":  "submit"}
+          "USER": {
+            "CLASS": "",
+            "NAME": "user",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "password",
+            "ID": ""
+          },
+          "SUBMIT": {
+            "CLASS": "",
+            "NAME": "",
+            "ID": "submit"
+          }
         },
         "PARAMETERS": {
           "USER_PARAMETER": "",

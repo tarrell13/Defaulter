@@ -11,8 +11,16 @@
           "POST": ["/administrator/index.php"]
         },
         "SUBMISSION": {
-          "USER": "username",
-          "PASS": "passwd",
+          "USER": {
+            "CLASS": "",
+            "NAME": "username",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "passwd",
+            "ID": ""
+          },
           "SUBMIT": {
             "CLASS": "login-button",
             "NAME": "",

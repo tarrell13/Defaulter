@@ -156,7 +156,7 @@ class Authenticator(object):
         """ Authenticate account using web page onclick events """
 
         """ Time Delay Tracker For Some Page Loads, will increment 3 times before skipping host  """
-        page_delay = 1
+        page_delay = 0
         page_increment_count = 0
         skip_host = False
 
@@ -191,9 +191,6 @@ class Authenticator(object):
                     while True:
 
                         try:
-
-                            driver.delete_all_cookies()
-                            driver.refresh()
                             driver.get("%s%s" % (host.url, post))
                             time.sleep(page_delay)
 
@@ -256,7 +253,9 @@ class Authenticator(object):
                                 self.output.errorOutput(element_issue=host)
                                 break
                             elif re.search("Alert", str(e)):
-                                driver.switchTo().alert().dismiss();
+                                page_delay += 3
+                                page_increment_count += 1
+                                self.output.errorOutput(increase_timing=True)
                                 continue
                             else:
                                 host.timedOut = True
@@ -276,6 +275,8 @@ class Authenticator(object):
                         host.defaults = True
                         host.scanned = True
                         host.attempts = 0
+                        driver.delete_all_cookies()
+                        driver.refresh()
                         page_increment_count = 0
                         self.output.TermOutput(host=host, validUrl=post,
                                                username=username, password=password)

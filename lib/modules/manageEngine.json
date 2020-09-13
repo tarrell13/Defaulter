@@ -6,23 +6,47 @@
         "MODELS": ["servicedesk plus"],
         "AUTHENTICATION": "form",
         "TOKEN_URI": "/",
+
         "URI": {
           "GET": [],
-          "POST": ["/j_security_check"]
+          "POST": ["/"]
+        },
+        "SUBMISSION": {
+          "USER": {
+            "CLASS": "",
+            "NAME": "j_username",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "j_password",
+            "ID": ""
+          },
+          "SUBMIT": {
+            "CLASS": "",
+            "NAME": "loginButton",
+            "ID": ""
+          }
         },
         "PARAMETERS": {
-          "USER_PARAMETER": "j_username",
-          "PASS_PARAMETER": "j_password",
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "",
           "DYNAMIC": [],
           "STATIC": {}
         },
-        "SUCCESS_TOKENS": ["logout","homepage"],
+        "SUCCESS_TOKENS": [],
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
-        "REDIRECTION": "true",
-        "USERNAMES" : [],
-        "PASSWORDS" : [],
-        "COOKIES" : "true"
+        "REDIRECTION": "",
+        "USERNAMES" : ["guest","admin", "guest"],
+        "PASSWORDS" : ["admin", "guest"],
+        "COOKIES" : "",
+        "SUCCESSV2": {
+            "STATUS_CODE": [],
+            "COOKIES": [],
+            "URL": ["/HomePage.do"],
+            "SOURCE": []
+          }
       }
     ]
   }

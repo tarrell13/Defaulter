@@ -3,26 +3,49 @@
     "FINGERPRINTS": ["prtg"],
     "CONFIGURATION": [
       {
-        "MODELS": ["PRTG Network Monitor 18"],
+        "MODELS": ["Network Monitor 18"],
         "AUTHENTICATION": "form",
         "TOKEN_URI": "/index.htm",
         "URI": {
           "GET": [],
-          "POST": ["/public/checklogin.htm"]
+          "POST": ["/index.htm"]
+        },
+        "SUBMISSION": {
+          "USER": {
+            "CLASS": "",
+            "NAME": "username",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "password",
+            "ID": ""
+          },
+          "SUBMIT": {
+            "CLASS": "loginbutton",
+            "NAME": "",
+            "ID": ""
+          }
         },
         "PARAMETERS": {
-          "USER_PARAMETER": "username",
-          "PASS_PARAMETER": "password",
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "",
           "DYNAMIC": [],
           "STATIC": {}
         },
-        "SUCCESS_TOKENS": ["200", "welcome", "logout"],
+        "SUCCESS_TOKENS": [],
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
-        "REDIRECTION": "true",
-        "USERNAMES" : ["prtgadmin"],
-        "PASSWORDS" : ["prtgadmin"],
-        "COOKIES" : "true"
+        "REDIRECTION": "",
+        "USERNAMES" : ["prtgadmin","admin", "prtgadmin"],
+        "PASSWORDS" : ["prtgadmin", "PrTg@dmin2019"],
+        "COOKIES" : "",
+        "SUCCESSV2": {
+          "STATUS_CODE": [],
+          "COOKIES": [],
+          "URL": [],
+          "SOURCE": ["logout"]
+        }
       }
     ]
   }

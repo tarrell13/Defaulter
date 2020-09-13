@@ -11,8 +11,8 @@
           "POST": ["/session"]
         },
         "SUBMISSION": {
-          "USER": "username",
-          "PASS": "password",
+          "USER": {"CLASS":  "", "NAME":  "username", "ID":  ""},
+          "PASS": {"CLASS":  "", "NAME":  "password", "ID":  ""},
           "SUBMIT": {"CLASS":  "", "NAME":  "", "ID":  ""}
         },
         "PARAMETERS": {

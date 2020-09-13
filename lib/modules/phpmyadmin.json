@@ -10,19 +10,42 @@
           "GET": [],
           "POST": ["/index.php"]
         },
+        "SUBMISSION": {
+          "USER": {
+            "CLASS": "",
+            "NAME": "pma_username",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "pma_password",
+            "ID": ""
+          },
+          "SUBMIT": {
+            "CLASS": "",
+            "NAME": "",
+            "ID": "input_go"
+          }
+        },
         "PARAMETERS": {
-          "USER_PARAMETER": "pma_username",
-          "PASS_PARAMETER": "pma_password",
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "",
           "DYNAMIC": [],
           "STATIC": {}
         },
-        "SUCCESS_TOKENS": ["302"],
-        "FAILURE_TOKENS": ["denied"],
+        "SUCCESS_TOKENS": [],
+        "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
-        "REDIRECTION": "false",
+        "REDIRECTION": "",
         "USERNAMES" : [],
         "PASSWORDS" : [],
-        "COOKIES" : "true"
+        "COOKIES" : "",
+        "SUCCESSV2": {
+          "STATUS_CODE": [],
+          "COOKIES": [],
+          "URL": [],
+          "SOURCE": ["logout.php"]
+        }
       }
     ]
   }

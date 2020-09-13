@@ -11,8 +11,16 @@
           "POST": ["/users/sign_in"]
         },
         "SUBMISSION": {
-          "USER": "user[login]",
-          "PASS": "user[password]",
+          "USER": {
+            "CLASS": "",
+            "NAME": "user[login]",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "user[password]",
+            "ID": ""
+          },
           "SUBMIT": {"CLASS":  "", "NAME":  "commit", "ID":  ""}
         },
         "PARAMETERS": {

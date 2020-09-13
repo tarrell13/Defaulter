@@ -4,25 +4,48 @@
     "CONFIGURATION": [
       {
         "MODELS":  ["workcentre"],
-        "AUTHENTICATION": "form",
-	"TOKEN_URI" : "/properties/authentication/login.php",
+        "AUTHENTICATION": "api",
+	    "TOKEN_URI" : "/properties/authentication/login.php",
         "URI": {
           "GET": [],
           "POST": ["/userpost/xerox.set"]
         },
+        "SUBMISSION": {
+          "USER": {
+            "CLASS": "",
+            "NAME": "webUsername",
+            "ID": ""
+          },
+          "PASS": {
+            "CLASS": "",
+            "NAME": "webPassword",
+            "ID": ""
+          },
+          "SUBMIT": {
+            "CLASS": "",
+            "NAME": "",
+            "ID": ""
+          }
+        },
         "PARAMETERS": {
-          "USER_PARAMETER": "webUsername",
-          "PASS_PARAMETER": "webPassword",
+          "USER_PARAMETER": "",
+          "PASS_PARAMETER": "",
           "DYNAMIC": [],
           "STATIC": {}
         },
-        "SUCCESS_TOKENS": ["200","logout"],
-        "FAILURE_TOKENS": ["invalid"],
+        "SUCCESS_TOKENS": [],
+        "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
-     	"REDIRECTION" : "false",
-        "COOKIES" : "true",
+     	"REDIRECTION" : "",
+        "COOKIES" : "",
         "USERNAMES" : ["admin"],
-        "PASSWORDS" : ["1111"]
+        "PASSWORDS" : ["1111"],
+        "SUCCESSV2": {
+          "STATUS_CODE": [200],
+          "COOKIES": [],
+          "URL": [],
+          "SOURCE": ["logout"]
+        }
       }
     ]
   }

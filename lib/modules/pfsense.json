@@ -37,7 +37,7 @@
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
         "REDIRECTION": "",
-        "USERNAMES" : ["rohit", "admin", "rohit"],
+        "USERNAMES" : ["admin"],
         "PASSWORDS" : ["pfsense"],
         "COOKIES" : "",
          "SUCCESSV2": {
