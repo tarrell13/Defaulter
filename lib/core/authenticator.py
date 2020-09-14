@@ -197,6 +197,17 @@ class Authenticator(object):
                             user_element = None
                             passwd_element = None
                             submit_element = None
+                            adminbtn = None
+
+                            if application.submission["LOAD"]["CLASS"]:
+                                adminbtn = driver.find_element_by_class_name(application.submission["LOAD"]["CLASS"])
+                            elif application.submission["LOAD"]["NAME"]:
+                                adminbtn = driver.find_element_by_name(application.submission["LOAD"]["NAME"])
+                            elif application.submission["LOAD"]["ID"]:
+                                adminbtn = driver.find_element_by_id(application.submission["LOAD"]["ID"])
+
+                            if adminbtn:
+                                adminbtn.click()
 
                             """ Retrieve Username Element """
                             if not application.empty_user:

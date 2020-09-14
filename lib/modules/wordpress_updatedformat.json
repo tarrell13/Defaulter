@@ -16,6 +16,11 @@
       "POST": ["/wp-login.php"]
     },
     "SUBMISSION": {
+          "LOAD": {
+            "CLASS":  null,
+            "NAME":  null,
+            "ID":  "adminloginbtn"
+          },
           "USER": {
             "CLASS": null,
             "NAME": "log",

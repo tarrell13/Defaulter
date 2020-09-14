@@ -18,6 +18,11 @@
           ]
         },
         "SUBMISSION": {
+          "LOAD": {
+            "CLASS": "",
+            "NAME": "adminloginbtn",
+            "ID": ""
+          },
           "USER": {
             "CLASS": "",
             "NAME": "",
@@ -25,12 +30,12 @@
           },
           "PASS": {
             "CLASS": "",
-            "NAME": "ggt_textbox(10006)",
-            "ID": ""
+            "NAME": "",
+            "ID": "element10006"
           },
           "SUBMIT": {
-            "CLASS": "adminloginbtn",
-            "NAME": "",
+            "CLASS": "",
+            "NAME": "loginbtn",
             "ID": ""
           }
         },
@@ -44,16 +49,16 @@
           "FAILURE_TOKENS": [],
           "THRESHOLD": "",
           "REDIRECTION": "",
-          "USERNAMES": [],
+          "USERNAMES": ["NONE"],
           "PASSWORDS": [
-            "admin"
+            "test", "admin"
           ],
           "COOKIES": "",
           "SUCCESSV2": {
             "STATUS_CODE": [],
             "COOKIES": [],
             "URL": [],
-            "SOURCE": []
+            "SOURCE": ["Logout"]
           }
         }
     ]

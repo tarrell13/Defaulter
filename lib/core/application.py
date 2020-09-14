@@ -38,7 +38,7 @@ class Application(object):
 
     def CheckEmptyUser(self):
         """ Checks If the Application Utilizes Both Username and/or Password """
-        if self.passwords and not self.usernames:
+        if self.passwords and not self.usernames or self.usernames[0] == "NONE":
             self.empty_user = True
 
     @property
