@@ -30,7 +30,7 @@
         "THRESHOLD" : "3",
 	    "REDIRECTION" : "",
         "COOKIES" :"",
-        "USERNAMES" : [ "admin" ,"wp", "admin"],
+        "USERNAMES" : [ "wp" ,"admins" ],
         "PASSWORDS" : ["wp", "admin", "password"],
         "SUCCESSV2": {
           "STATUS_CODE": [],

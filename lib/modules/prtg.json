@@ -37,8 +37,8 @@
         "FAILURE_TOKENS": [],
         "THRESHOLD" : "",
         "REDIRECTION": "",
-        "USERNAMES" : ["prtgadmin","admin", "prtgadmin"],
-        "PASSWORDS" : ["prtgadmin", "PrTg@dmin2019"],
+        "USERNAMES" : ["prtgadmin"],
+        "PASSWORDS" : ["prtgadmin"],
         "COOKIES" : "",
         "SUCCESSV2": {
           "STATUS_CODE": [],
